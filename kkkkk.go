@@ -9782,7 +9782,7 @@ func sendRequests(url string, wg *sync.WaitGroup, successCount *int64, errorCoun
 		Transport: tr,
 	}
 
-	for i := 0; i < 375000000000000; i++ {
+	for i := 0; i < 37500000000000; i++ {
 		req, err := http.NewRequest("GET", url, nil)
 		if err != nil {
 			(*errorCount)++
@@ -9818,7 +9818,7 @@ func main() {
 	var wg sync.WaitGroup
 	var successCount, errorCount int64
 
-	for i := 0; i < 100000; i++ {
+	for i := 0; i < 10000; i++ {
 		wg.Add(1)
 		go sendRequests(url, &wg, &successCount, &errorCount)
 		time.Sleep(1 * time.Nanosecond)
